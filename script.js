@@ -2,7 +2,6 @@ const API_URL = "https://countries.dev/countries";
 
 // Tous les pays reçus de l'API (rempli une seule fois, au chargement)
 let allCountries = [];
-
 // TODO : récupère ici les éléments du DOM dont tu as besoin
 
 /**
@@ -13,8 +12,20 @@ let allCountries = [];
  * @returns {Promise<Array>} Le tableau de tous les pays.
  */
 async function fetchCountries() {
-  // TODO
+  try {
+    const response = await fetch("https://countries.dev/countries");
+    if (!response.ok) {
+      throw new Error(`erreur could not fetch data ${response.status}`);
+    } 
+    allCountries = await response.json();
+    createCountryCard(allCountries)
+  }
+    
+    catch (error) {
+      console.error("Failed to fetch:", error);
+    }
 }
+fetchCountries()
 
 /**
  * Crée la carte HTML d'un pays, sur le modèle de la maquette :
@@ -24,8 +35,49 @@ async function fetchCountries() {
  * @returns {HTMLElement} La carte, prête à être ajoutée à la grille.
  */
 function createCountryCard(country) {
-  // TODO
+  const container = document.getElementById("pays-container")
+  country.forEach((country)=>{
+    const article = document.createElement("article")
+    article.classList.add("border", "border-[#D9E0E8]", "rounded-[12px]","overflow-hidden", "hover:cursor-pointer", "hover:border-black")
+    container.appendChild(article)
+
+    const img = document.createElement("img")
+    img.src =   country.flags.svg
+    img.alt = `${country.name} flag`
+    img.classList.add("w-full", "max-h-50")
+    article.appendChild(img)
+
+    const h2 = document.createElement("h2")
+    h2.textContent = country.name
+    h2.classList.add("text-xl", "p-2")
+    article.appendChild(h2)
+
+    const div1 = document.createElement("div")
+    div1.classList.add("flex", "justify-between", "mt-2", "p-2")
+    article.appendChild(div1)
+
+    const p = document.createElement("p")
+    p.textContent = "Capitale"
+    div1.appendChild(p)
+
+    const span = document.createElement("span")
+    span.textContent = country.capital
+    div1.appendChild(span)
+
+    const div2 = document.createElement("div")
+    div2.classList.add("flex", "justify-between", "mt-2", "p-2")
+    article.appendChild(div2)
+
+    const p2 = document.createElement("p")
+    p2.textContent = "Population"
+    div2.appendChild(p2)
+    
+    const span2 = document.createElement("span");
+    span2.textContent = country.population
+    div2.appendChild(span2)
+  })
 }
+
 
 /**
  * Affiche une liste de pays dans la grille.

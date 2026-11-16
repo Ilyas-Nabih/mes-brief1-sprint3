@@ -14,10 +14,86 @@
     />
 
     <!-- Si tu utilises un framework CSS (Bootstrap, Tailwind…), ajoute son lien ICI, AVANT style.css -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
 
     <!-- defer : le script s'exécute une fois le HTML chargé -->
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header class="bg-[#0F4C81] p-4">
+      <span class="text-white font-bold text-2xl ml-16">
+        Atlas Voyages
+      </span>
+    </header>
+    <main>
+      <section class="p-4">
+        <div class="p-4 ml-12">
+          <h1 class="font-bold text-4xl">Explorer le monde</h1>
+          <p class="text-[#5B6576]">Choisis un continent, parcours les pays et trouve ta prochaine destination.</p>
+        </div>
+        <div class="lg:grid lg:grid-cols-2 p-12 rounded-[12px] gap-4 border border-[#D9E0E8] mx-16">
+          <div class="grid grid-cols-1">
+            <label for="recherche">Rechercher un pays</label>
+            <input 
+            type="text"
+            id="recherche"
+            class="border border-[#D9E0E8] rounded-[6px] p-2"
+            >
+          </div>
+          <div class="grid grid-cols-1">
+            <label for="Continent">Continent</label>
+            <select name="choix" id="Continent" class="rounded-[6px] border border-[#D9E0E8] p-2">
+              <option value="">toutes les continents</option>
+            </select>
+          </div>
+
+        </div>
+      </section>
+      <section>
+        <div id="pays-container" class="grid lg:grid-cols-3 gap-4 mx-6 lg:mx-20">
+          <!-- <article class="border border-[#D9E0E8] rounded-[12px] overflow-hidden hover:cursor-pointer hover:border-black">
+            <img src="Drapeau_img.png" alt="image de pays" class="w-full max-h-50">
+            <h2 class="text-xl p-2">Morocco</h2>
+              <div class="flex justify-between mt-2 p-2">
+                <p>Capitale</p>
+                <span>Rabat</span>
+              </div>
+              <div class="flex justify-between mt-2 p-2">
+                <p>Population</p>
+                <span>37 457 971</span>
+              </div>
+              
+          </article> -->
+          <!-- <article class="border border-[#D9E0E8]">
+            <img src="Drapeau_img.png" alt="image de pays" class="w-full max-h-50">
+            <h2 class="text-xl">Morocco</h2>
+              <div class="">
+                <p>Capitale</p>
+                <span>Rabat</span>
+              </div>
+              <div>
+                <p>Population</p>
+                <span>37 457 971</span>
+              </div>
+              
+          </article>
+          <article class="border border-[#D9E0E8]">
+            <img src="Drapeau_img.png" alt="image de pays" class="w-full max-h-50">
+            <h2>Morocco</h2>
+              <div class="">
+                <p>Capitale</p>
+                <span>Rabat</span>
+              </div>
+              <div>
+                <p>Population</p>
+                <span>37 457 971</span>
+              </div>
+              
+          </article> -->
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
